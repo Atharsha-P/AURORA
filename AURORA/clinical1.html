@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Interviews</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="clinical.css">
+</head>
+<body>
+    <header>
+        <h1>Clinical Interviews</h1>
+        <nav>
+            <ul>
+                <li><a href="nextlogin.html">Home</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="interview-form">
+            <h2>Interview Form</h2>
+            <form>
+                <label for="patient-name">Patient Name:</label>
+                <input type="text" id="patient-name" name="patient-name" required>
+                <label for="interviewer-name">Interviewer Name:</label>
+                <input type="text" id="interviewer-name" name="interviewer-name" required>
+                <label for="interview-date">Interview Date:</label>
+                <input type="date" id="interview-date" name="interview-date" required>
+                <label for="notes">Notes:</label>
+                <textarea id="notes" name="notes" rows="4"></textarea>
+                <!-- Add more fields as needed -->
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <section id="interview-list">
+            <h2>Interview List</h2>
+            <ul>
+                <!-- Placeholder for displaying interview records -->
+                <li>Interview 1: John Doe, Dr. Smith, 2024-04-22</li>
+                <li>Interview 2: Jane Doe, Dr. Johnson, 2024-04-21</li>
+                <!-- Add more interview records dynamically -->
+            </ul>
+        </section>
+        <section id="about" style="display: none;">
+            <h2>About</h2>
+            <p>Welcome to the Clinical Interviews platform. We provide free therapy sessions for individuals seeking mental health support. Our clinical interviews are conducted by experienced therapists who offer three free sessions to help you address your concerns.</p>
+            <p>During these sessions, our therapists will guide you through a structured interview process to understand your thoughts, feelings, and experiences. They will provide support, coping strategies, and resources tailored to your needs.</p>
+            <p>Don't forget to schedule your sessions and make the most out of this opportunity for self-care and growth. You will receive reminders for your upcoming sessions to ensure you don't miss them.</p>
+            <button id="start-therapy">Start Therapy</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Clinical Interviews</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const interviewList = document.querySelector('#interview-list ul');
+            const aboutLink = document.getElementById('about-link');
+            const aboutSection = document.getElementById('about');
+            const startTherapyButton = document.getElementById('start-therapy');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+    
+                const patientName = document.getElementById('patient-name').value;
+                const interviewerName = document.getElementById('interviewer-name').value;
+                const interviewDate = document.getElementById('interview-date').value;
+    
+                const newInterview = document.createElement('li');
+                newInterview.textContent = `Interview: ${patientName}, ${interviewerName}, ${interviewDate}`;
+                interviewList.appendChild(newInterview);
+    
+                // Clear the form fields after submission
+                form.reset();
+            });
+
+            aboutLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                aboutSection.style.display = 'block';
+            });
+
+            startTherapyButton.addEventListener('click', function() {
+                window.location.href = "call_selection.html"; // Redirect to call selection page
+            });
+        });
+    </script>
+    
+</body>
+</html>

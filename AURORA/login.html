@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Aurora</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .login h2 {
+            color: #800080;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .login form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login input {
+            margin-bottom: 15px;
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .login input:focus {
+            border-color: #800080;
+        }
+
+        .login button {
+            padding: 12px 24px;
+            background-color: #800080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .login button:hover {
+            background-color: #BA55D3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login">
+            <h2>WELCOME BACK!</h2>
+            <form action="login_process.php" method="POST" onsubmit="return redirectToDashboard()">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+        </div>
+    </div>
+
+    <script>
+        function redirectToDashboard() {
+            // Redirect to the dashboard page after login
+            window.location.href = "nextlogin.html";
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal</title>
+    <link rel="stylesheet" href="pjcss.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #800080;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .home-button {
+            display: block;
+            margin: 20px auto; /* Center the button */
+            padding: 10px 20px;
+            background-color: #800080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #BA55D3;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        /* Remaining CSS styles... */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>JOURNAL</h1>
+    </header>
+    <main>
+        <a href="nextlogin.html" class="home-button">Home</a>
+        <section id="journal-form">
+            <h2>Write in Your Journal</h2>
+            <form id="journalEntryForm">
+                <label for="journal-date">Date:</label>
+                <input type="date" id="journal-date" name="journal-date" required>
+                <label for="journal-entry">Entry:</label>
+                <textarea id="journal-entry" name="journal-entry" rows="8" required></textarea>
+                <button type="submit">Save Entry</button>
+            </form>
+        </section>
+        <section id="journal-entries">
+            <h2>Recent Entries</h2>
+            <ul id="entries-list">
+                <!-- Placeholder for displaying journal entries -->
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Journal</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const journalEntryForm = document.getElementById('journalEntryForm');
+            const entriesList = document.getElementById('entries-list');
+
+            // Event listener for form submission
+            journalEntryForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+
+                // Get form values
+                const date = document.getElementById('journal-date').value;
+                const entry = document.getElementById('journal-entry').value;
+
+                // Create a new list item
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<span class="entry-date">Date: ${date}</span><p class="entry-content">${entry}</p>`;
+
+                // Append the new entry to the entries list
+                entriesList.appendChild(listItem);
+
+                // Reset the form
+                journalEntryForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>

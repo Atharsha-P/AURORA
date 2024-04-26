@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        h2 {
+            color: #800080;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: #800080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #BA55D3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="setPasswordForm">
+            <h2>Set Your Password:</h2>
+            <form id="passwordFormSet">
+                <input type="password" id="passwordInputSet" name="password" placeholder="Enter Password" required>
+                <button type="submit">Set Password</button>
+            </form>
+            <p class="error-message" id="errorMessageSet"></p>
+            <p class="success-message" id="successMessageSet"></p>
+        </div>
+        <div id="enterPasswordForm" style="display: none;">
+            <h2>Enter Your Password:</h2>
+            <form id="passwordFormEnter">
+                <input type="password" id="passwordInputEnter" name="password" placeholder="Enter Password" required>
+                <button type="submit">Enter</button>
+            </form>
+            <p class="error-message" id="errorMessageEnter"></p>
+        </div>
+    </div>
+
+    <script>
+        const setPasswordForm = document.getElementById('setPasswordForm');
+        const passwordFormSet = document.getElementById('passwordFormSet');
+        const passwordInputSet = document.getElementById('passwordInputSet');
+        const errorMessageSet = document.getElementById('errorMessageSet');
+        const successMessageSet = document.getElementById('successMessageSet');
+
+        const enterPasswordForm = document.getElementById('enterPasswordForm');
+        const passwordFormEnter = document.getElementById('passwordFormEnter');
+        const passwordInputEnter = document.getElementById('passwordInputEnter');
+        const errorMessageEnter = document.getElementById('errorMessageEnter');
+
+        // Check if password is already set
+        const savedPassword = localStorage.getItem('password');
+
+        if (!savedPassword) {
+            // Show set password form
+            setPasswordForm.style.display = 'block';
+        } else {
+            // Show enter password form
+            enterPasswordForm.style.display = 'block';
+        }
+
+        passwordFormSet.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            const password = passwordInputSet.value.trim(); // Get password input value
+            
+            // Save the password to localStorage
+            localStorage.setItem('password', password);
+            // Display success message
+            successMessageSet.textContent = 'Password set successfully!';
+            // Hide set password form
+            setPasswordForm.style.display = 'none';
+            // Show enter password form
+            enterPasswordForm.style.display = 'block';
+            // Reset the form
+            passwordFormSet.reset();
+        });
+
+        passwordFormEnter.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            const password = passwordInputEnter.value.trim(); // Get password input value
+            
+            // Check if entered password matches the saved password
+            if (password === savedPassword) {
+                // Redirect to the personal journal page
+                window.location.href = 'pj.html';
+            } else {
+                // Display error message for incorrect password
+                errorMessageEnter.textContent = 'Incorrect password. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>

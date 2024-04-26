@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditation Suggestions</title>
+    <link rel="stylesheet" href="meditatecss.css">
+</head>
+
+<body>
+    <header>
+        <h1>MEDITATION SUGGESTIONS</h1>
+        <nav>
+            <ul>
+                <a href="nextlogin.html" class="home-button">Home</a>
+                
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="meditation-suggestions">
+            <h2>Recommended Meditation Sessions</h2>
+            <div class="meditation-session">
+                <h3>Morning Meditation</h3>
+                <p>Description: Start your day with a calming morning meditation session to set a positive tone for the day.</p>
+                <button onclick="startMeditation('morning')">Start</button>
+            </div>
+            <div class="meditation-session">
+                <h3>Evening Relaxation</h3>
+                <p>Description: Unwind and relax with a soothing evening meditation session to release stress and tension.</p>
+                <button onclick="startMeditation('evening')">Start</button>
+            </div>
+            <!-- Add more meditation sessions as needed -->
+        </section>
+        <section id="meditation-player">
+            <h2>Meditation Player</h2>
+            <div id="player-container">
+                <!-- Placeholder for meditation player -->
+                <audio controls id="meditation-audio">
+                    <source src="#" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Meditation Suggestions</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
